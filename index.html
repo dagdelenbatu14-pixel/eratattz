@@ -16,109 +16,250 @@
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Eskişehir Dövme — eratattz","address":{"@type":"PostalAddress","addressLocality":"Eskişehir","addressCountry":"TR"},"sameAs":["https://www.instagram.com/eratattz"]}
 </script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden}
-body{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  min-height:100vh;padding:40px 24px;text-align:center;position:relative;
-  font-family:'Helvetica Neue',Arial,sans-serif;
-  color:#E8E8F0;background:#0A0A12
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #E8E8F0;
+  background: #0A0A12;
+  position: relative;
+  overflow: hidden;
 }
 
-#bg{
-  position:fixed;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse at 60% 30%, rgba(50,44,70,0.6) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(30,28,50,0.5) 0%, transparent 50%),
-    linear-gradient(170deg, #0E0D18 0%, #13111E 40%, #0A090F 100%);
-  background-size:cover;background-position:center;background-repeat:no-repeat;
-  opacity:1;transition:opacity 1.4s ease
+/* Arka plan görseli */
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.4s ease;
 }
-#bg::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(160deg,rgba(10,10,18,0.3) 0%,rgba(8,8,14,0.35) 50%,rgba(10,10,18,0.45) 100%)
-}
-
-#grain{position:fixed;inset:0;z-index:1;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  opacity:.3}
-
-.card{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;max-width:500px;width:100%;opacity:0;animation:fadeUp .9s .2s ease forwards}
-
-.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px}
-.eyebrow::before,.eyebrow::after{content:'';flex:0 0 28px;height:.5px;background:#4A4A62}
-.eyebrow span{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#6A6A82}
-
-.logo-at{font-size:11px;font-style:italic;letter-spacing:6px;color:#6A6A82;margin-bottom:2px;font-family:Georgia,serif}
-.logo-mark{
-  font-family:Impact,'Arial Narrow',Arial,sans-serif;
-  font-size:clamp(58px,12vw,90px);line-height:.88;letter-spacing:4px;
-  background:linear-gradient(160deg,#EEEEF8 0%,#9898B4 40%,#C4C4DC 70%,#7070901 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
-}
-.logo-name{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:16px;font-style:italic;font-weight:400;
-  letter-spacing:5px;color:#8A8AA4;margin-top:10px
-}
-.logo-city{
-  font-family:Impact,'Arial Narrow',Arial,sans-serif;
-  font-size:12px;letter-spacing:10px;color:#3A3A52;margin-top:8px
+#bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 18, 0.55);
 }
 
-.divider{display:flex;align-items:center;gap:10px;width:100%;margin:28px 0 24px}
-.divider::before,.divider::after{content:'';flex:1;height:.5px;background:linear-gradient(to right,transparent,#3A3A52)}
-.divider::after{background:linear-gradient(to left,transparent,#3A3A52)}
-.divider-dot{width:3px;height:3px;background:#5A5A72;border-radius:50%}
-
-.tagline{font-size:11px;color:#5A5A72;font-weight:300;line-height:2;letter-spacing:1px;margin-bottom:32px}
-.tagline strong{color:#9898B4;font-weight:400;letter-spacing:1.5px}
-
-.btn-instagram{
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  width:100%;padding:18px 32px;
-  background:linear-gradient(135deg,#28283A 0%,#32324A 50%,#24243A 100%);
-  color:#D4D4EC;text-decoration:none;
-  font-size:10px;letter-spacing:5px;text-transform:uppercase;
-  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:500;
-  border:1px solid rgba(140,140,180,0.18);transition:all .3s
+.card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 680px;
+  width: 100%;
+  animation: fadeUp 0.9s ease forwards;
 }
-.btn-instagram:hover{border-color:rgba(160,160,210,0.4);color:#F0F0FF;transform:translateY(-1px)}
-.btn-instagram svg{width:19px;height:19px;flex-shrink:0;opacity:.75}
 
-.btn-wa{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  margin-top:8px;width:100%;padding:14px 32px;
-  background:transparent;color:#484860;text-decoration:none;
-  font-size:9px;letter-spacing:4px;text-transform:uppercase;
-  font-family:'Helvetica Neue',Arial,sans-serif;
-  border:1px solid #22223A;transition:all .25s
+/* ESKİŞEHİR DÖVME */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
 }
-.btn-wa:hover{border-color:#3A3A58;color:#7A7A96}
-.btn-wa svg{width:14px;height:14px;opacity:.6}
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  flex: 0 0 40px;
+  height: 0.5px;
+  background: #4A4A62;
+}
+.eyebrow span {
+  font-size: 11px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: #6A6A82;
+}
 
-.footer-note{margin-top:28px;font-size:8px;letter-spacing:3px;color:#22223A;text-transform:uppercase}
+/* @eratattz */
+.logo-at {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 7px;
+  color: #6A6A82;
+  margin-bottom: 12px;
+}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+/* ERATATTZ — büyük kalın */
+.logo-mark {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 120px;
+  line-height: 1;
+  letter-spacing: 8px;
+  color: #FFFFFF;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+/* Eren ALICI */
+.logo-name {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: 8px;
+  color: #9898B4;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+/* ESKİŞEHİR */
+.logo-city {
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 12px;
+  color: #3A3A52;
+  margin-bottom: 32px;
+}
+
+/* Çizgi */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: #2A2A3A;
+}
+.divider-dot {
+  width: 4px;
+  height: 4px;
+  background: #4A4A62;
+  border-radius: 50%;
+}
+
+/* Tarzlar */
+.tagline {
+  font-size: 13px;
+  color: #5A5A72;
+  line-height: 2.2;
+  letter-spacing: 1.5px;
+  margin-bottom: 36px;
+}
+.tagline strong {
+  color: #9898B4;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* Instagram butonu */
+.btn-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 20px 40px;
+  background: #1E1E2E;
+  color: #C8C8E8;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: 1px solid #3A3A52;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+}
+.btn-instagram:hover {
+  background: #28283E;
+  border-color: #5A5A82;
+  color: #FFFFFF;
+}
+.btn-instagram svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+}
+
+/* WhatsApp butonu */
+.btn-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 40px;
+  background: transparent;
+  color: #484860;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: 1px solid #1E1E2E;
+  transition: all 0.25s;
+}
+.btn-wa:hover {
+  border-color: #3A3A58;
+  color: #7A7A96;
+}
+.btn-wa svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+}
+
+.footer-note {
+  margin-top: 32px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #1E1E2E;
+  text-transform: uppercase;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 
 <div id="bg"></div>
-<div id="grain"></div>
 
 <div class="card">
+
+  <!-- ESKİŞEHİR DÖVME -->
   <div class="eyebrow"><span>Eskişehir Dövme</span></div>
+
+  <!-- @eratattz -->
   <div class="logo-at">@ e r a t a t t z</div>
+
+  <!-- ERATATTZ -->
   <div class="logo-mark">ERATATTZ</div>
+
+  <!-- Eren ALICI -->
   <div class="logo-name">Eren ALICI</div>
 
+  <!-- ESKİŞEHİR -->
   <div class="logo-city">ESKİŞEHİR</div>
+
   <div class="divider"><div class="divider-dot"></div></div>
+
+  <!-- Tarzlar -->
   <p class="tagline">
     <strong>Fine line · Blackwork · Realism</strong><br>
     Geometric · Abstract
   </p>
+
+  <!-- Instagram -->
   <a class="btn-instagram" href="https://instagram.com/eratattz" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -127,21 +268,23 @@ body{
     </svg>
     Portföyü Gör — @eratattz
   </a>
+
+  <!-- WhatsApp -->
   <a class="btn-wa" href="https://wa.me/905443630248" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
     </svg>
     WhatsApp ile Randevu Al
   </a>
+
   <p class="footer-note">eskisehir-dovme-eratattz.com</p>
+
 </div>
 
 <script>
-// Gerçek sitede eren.jpg'yi background olarak eklemek için:
-// #bg { background-image: url('eren.jpg'); }
 async function loadBg() {
   const bg = document.getElementById('bg');
-  const names = ['eren.jpg','eren.jpeg','eren.JPG','eren.JPEG','eren.png','eren.webp'];
+  const names = ['eren.png','eren.jpg','eren.jpeg','eren.webp'];
   for (const name of names) {
     try {
       const buf = await window.fs.readFile(name);
@@ -151,14 +294,16 @@ async function loadBg() {
       for (let i = 0; i < arr.length; i += chunk)
         bin += String.fromCharCode(...arr.subarray(i, i + chunk));
       const ext = name.split('.').pop().toLowerCase();
-      const mime = ext==='png'?'image/png':ext==='webp'?'image/webp':'image/jpeg';
+      const mime = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
       bg.style.backgroundImage = `url(data:${mime};base64,${btoa(bin)})`;
-      bg.style.backgroundSize = 'cover';
-      bg.style.backgroundPosition = 'center';
+      bg.style.opacity = '1';
+      return;
     } catch(e) { continue; }
   }
+  bg.style.opacity = '1';
 }
 loadBg();
 </script>
+
 </body>
 </html>
